@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Footer from "./components/Footer";
+import Intraday from "./components/Intraday";
+import Investment from "./components/Investment";
 
 function App() {
+  const [toggleIntra, setToggleIntra] = useState(false);
+  const [toggleInvest, setToggleInvest] = useState(true);
+
+  const tog = () => {
+    setToggleIntra((prev) => !prev);
+    setToggleInvest((prev) => !prev);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Pivot Point Calculator</h1>
+      <p>-bharathkapril</p>
+      <button onClick={tog}>{toggleIntra ? "Investment" : "Intraday"}</button>
+      {toggleIntra && <Intraday />}
+      {toggleInvest && <Investment />}
+      {/* <Footer /> */}
     </div>
   );
 }
